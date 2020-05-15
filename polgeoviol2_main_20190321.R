@@ -463,9 +463,15 @@ ols5e <- lm(model5enc, data=shpbra@data)
 # output models to file
 
 stargazer(ols1m, ols2m, ols3m, ols4m,
-          type = "html", 
           keep.stat = c("n", "rsq", "adj.rsq", "aic"),
-          out = "./tables/ols.html")
+          out = "./tables/ols.html",
+          column.labels = c("Model 1", "Model 2", "Model 3", "Model 4"),
+          dep.var.caption = "OLS Models DV: change in homicide rate (HR Change)",
+          covariate.labels = c("Margin of Victory", "Alignment", "Abstension",
+                               "PMDB", "PSDB", "PT", "PopDensity",
+                               "YoungMalePct", "GINI", "HDI", "SingleMotherHH",
+                               "Employment", "BolsaFamilia"))
+save(ols1m, ols2m, ols3m, ols4m, file = "data.RData")
 
 stargazer(ols1m, ols2m, ols3m, ols4m, ols5m,
           type = "html", 
